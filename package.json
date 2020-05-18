@@ -25,7 +25,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "format": "prettier --write \"src/**/*.+(js|jsx|json|css|md)\"",
-    "lint": "eslint ."
+    "lint": "eslint ./src",
+    "lint:fix": "eslint --fix ./src",
+    "coveralls": "cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js"
   },
   "eslintConfig": {
     "extends": "react-app"
