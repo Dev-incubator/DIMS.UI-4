@@ -1,0 +1,54 @@
+@import '../../../assets/styles/scss/vars.scss';
+@import '../../../assets/styles/scss/mixins.scss';
+
+.member-card {
+  &_open {
+    border: 3px solid $highlight-bg;
+  }
+
+  &_open > &__header {
+    background-color: $highlight-bg;
+    position: relative;
+  }
+
+  &__body {
+    padding: 10px 30px;
+
+    .button {
+      margin: 0 5px;
+    }
+
+    .button:not(.button_primary) {
+      float: right;
+    }
+  }
+
+  &__header {
+    position: relative;
+    background-color: $primary-bg;
+    padding: 15px 35px;
+    height: 35px;
+    margin-bottom: 2px;
+
+    &__title {
+      font-size: 1.5rem;
+      margin: 0;
+      float: left;
+      padding-bottom: 2px;
+      border-bottom: 1px solid $dark-bg;
+    }
+
+    .date-badge {
+      float: right;
+      margin-left: 40px;
+      padding: 5px 0;
+      font-size: 1.3rem;
+      position: relative;
+      margin-top: -5px;
+    }
+    .text-badge {
+      float: right;
+    }
+  }
+  @include clearfix;
+}

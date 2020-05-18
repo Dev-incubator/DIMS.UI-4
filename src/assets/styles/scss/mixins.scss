@@ -1,0 +1,40 @@
+@mixin clearfix {
+  &:after {
+    content: '.';
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+  }
+}
+
+@mixin task-card_border($color) {
+  :before {
+    content: '';
+    width: 99%;
+    height: 90%;
+    display: block;
+    border: 2px solid $color;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+  }
+}
+
+@mixin invalidBounceKeyframes($bounceCount) {
+  @keyframes invalidBounce {
+    @for $i from 0 through ($bounceCount - 1) {
+      #{100 / ($bounceCount * 2) * ($i * 2)}% {
+        border-color: inherit;
+      }
+      #{100 / ($bounceCount * 2) * ($i * 2 + 1)}% {
+        border-color: $error;
+      }
+    }
+    100% {
+      border-color: inherit;
+    }
+  }
+}

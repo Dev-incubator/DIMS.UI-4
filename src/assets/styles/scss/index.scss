@@ -1,0 +1,118 @@
+@import 'vars.scss';
+@import 'mixins.scss';
+
+@import 'icons.scss';
+
+html {
+  font-family: 'Segoe UI', sans-serif;
+  color: $common-text;
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.error-color {
+  color: $error;
+  fill: $error;
+}
+
+.success-color {
+  color: $success;
+  fill: $success;
+}
+
+.common-text-color {
+  color: $common-text;
+  fill: $common-text;
+}
+
+hr {
+  width: calc(100% - 140px);
+  height: 5px;
+  background: $primary-bg;
+  border: none;
+}
+
+.list_no-type {
+  list-style-type: none;
+  margin: inherit;
+  padding: inherit;
+}
+
+.list-key {
+  font-weight: bold;
+  padding-right: 15px;
+}
+
+.inline-list {
+  display: flex;
+  justify-content: flex-start;
+  gap: 50px;
+  flex-wrap: wrap;
+  width: calc(100% - 90px);
+  padding: 0;
+  margin-bottom: 20px;
+  li {
+    display: block;
+    padding-left: 10px;
+    margin-left: 20px;
+    position: relative;
+    margin-bottom: 20px;
+    &:before {
+      content: '\2b24';
+      font-size: 0.4rem;
+      display: inline-block;
+      color: $common-text;
+      position: absolute;
+      left: 0;
+      top: 30%;
+    }
+    p {
+      margin: 0;
+    }
+  }
+}
+
+a:visited {
+  color: inherit;
+}
+
+.fixed-top {
+  position: fixed;
+  top: 0;
+}
+
+.flex {
+  display: flex;
+}
+
+.site-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 5px;
+  a {
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+.form-textarea {
+  padding: 5px;
+  border-radius: 5px;
+  border: 2px solid $dark-bg;
+  background: $light-bg;
+  color: $common-text;
+  outline: none;
+  display: inline-block;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  & > div {
+    margin-bottom: 20px;
+  }
+}

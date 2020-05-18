@@ -1,0 +1,87 @@
+@import '../../../assets/styles/scss/vars.scss';
+@import '../../../assets/styles/scss/mixins.scss';
+
+.task-card {
+  &_active > &__header {
+    position: relative;
+    @include task-card_border(white);
+  }
+  &_fail > &__header {
+    position: relative;
+    @include task-card_border($error);
+  }
+  &_success > &__header {
+    position: relative;
+    @include task-card_border($success);
+  }
+  &__header {
+    background: $primary-bg;
+    padding: 10px 35px;
+
+    @include clearfix;
+  }
+  &__title {
+    font-size: 1.2rem;
+    border-bottom: 1px solid $dark-bg;
+    float: left;
+  }
+  margin-bottom: 5px;
+  &.open > & {
+    &__header {
+      background: $highlight-bg;
+    }
+  }
+
+  .state {
+    background: $highlight-bg;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 1.1rem;
+    span {
+      padding: 5px;
+      padding-left: 50px;
+      width: 60px;
+      display: inline-block;
+      text-align: center;
+      background: $primary-bg;
+    }
+  }
+
+  &__header {
+    .date-badge {
+      float: right;
+      margin-top: 15px;
+      font-size: 1.3rem;
+    }
+  }
+
+  &__body {
+    border: 5px solid $highlight-bg;
+    padding: 20px;
+    @include clearfix();
+    .date-badge {
+      margin-right: 20px;
+      float: left;
+      margin-bottom: 0;
+      font-size: 1.1rem;
+    }
+  }
+
+  &__description {
+    margin-bottom: 35px;
+  }
+
+  .button-block {
+    .button:not(.button_primary) {
+      float: right;
+      margin-left: 10px;
+    }
+  }
+  &__dates {
+    @include clearfix;
+  }
+
+  .button_invisible {
+    padding: 20px;
+  }
+}

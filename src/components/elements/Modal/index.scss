@@ -1,0 +1,27 @@
+@import '../../../assets/styles/scss/vars.scss';
+@import '../../../assets/styles/scss/mixins.scss';
+
+.modal {
+  position: fixed;
+  display: none;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  z-index: 100;
+  &.show {
+    display: block;
+
+    z-index: 101;
+    & + .modal-shadow {
+      background: transparentize(black, 0.2);
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+    }
+  }
+  background: $light-bg;
+}

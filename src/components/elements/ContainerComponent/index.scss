@@ -1,0 +1,14 @@
+@import '../../../assets/styles/scss/vars.scss';
+@import '../../../assets/styles/scss/mixins.scss';
+
+.container:not(.fullwidth) {
+  max-width: 90vw;
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.container.fullwidth {
+  max-width: 90vw;
+  width: calc(1000px + (100vw - 1000px) / 2);
+  float: right;
+}

@@ -1,0 +1,82 @@
+@import '../../../../assets/styles/scss/vars.scss';
+@import '../../../../assets/styles/scss/mixins.scss';
+
+.edit-member {
+  .button {
+    margin-top: 40px;
+    margin-right: 70px;
+    &:last-child {
+      margin-right: 20px;
+    }
+    float: right;
+  }
+
+  .flex-column {
+    width: 45%;
+  }
+
+  .date-badge {
+    .form-control {
+      font-size: 1rem !important;
+      width: 100px;
+      text-align: center;
+      margin: 0;
+
+      margin-top: 10px;
+    }
+  }
+
+  .address {
+    .form-control {
+      width: calc(100% - 90px - 25px);
+    }
+  }
+
+  .form-radio {
+    appearance: none;
+    margin-left: 0;
+    & + label::before {
+      content: '';
+      height: 18px;
+      width: 18px;
+      border: 2px solid $common-text;
+      background: $light-bg;
+      display: inline-block;
+      border-radius: 20px;
+      margin-right: 5px;
+      box-sizing: border-box;
+    }
+    &:checked + label::before {
+      background: radial-gradient(circle, $common-text 0%, $common-text 50%, $light-bg 50%, $light-bg 100%);
+    }
+  }
+
+  .direction-badge {
+    width: 150px;
+  }
+
+  .form-select {
+    padding: 5px;
+    font-size: 1.1rem;
+    width: 150px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+  }
+
+  .form-control {
+    width: 280px;
+    font-size: 1.2rem;
+
+    &[name='firstName'],
+    &[name='lastName'] {
+      width: 200px;
+      font-size: 1.4rem;
+      margin-right: 10px;
+    }
+    &[name='universityAverageScore'],
+    &[name='mathScore'] {
+      width: 50px;
+    }
+  }
+}

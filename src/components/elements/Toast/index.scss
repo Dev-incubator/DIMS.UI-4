@@ -1,0 +1,30 @@
+@import '../../../assets/styles/scss/vars.scss';
+@import '../../../assets/styles/scss/mixins.scss';
+
+.toast {
+  background-color: $light-bg;
+  width: 300px;
+  margin: 10px;
+
+  &__header {
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-align: left;
+  }
+  &__body {
+    padding: 10px 20px;
+    text-align: left;
+  }
+
+  @each $type, $color in ('success': $success, 'error': $error, 'info': $info) {
+    &_#{$type} {
+      color: $color;
+      .toast__header {
+        background: transparentize($color, 0.7);
+      }
+      box-shadow: 0px 0px 3px 3px transparentize($color, 0.7);
+      border: 2px solid $color;
+    }
+  }
+}

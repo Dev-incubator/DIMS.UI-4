@@ -1,0 +1,33 @@
+@import '../../../../assets/styles/scss/vars.scss';
+@import '../../../../assets/styles/scss/mixins.scss';
+
+.track-create {
+  width: 50vw;
+  height: 65vh;
+  .task-edit__description {
+    height: 29vh;
+  }
+
+  .task-edit__dates {
+    margin-bottom: 10px;
+  }
+  .task-edit__header {
+    @include clearfix();
+  }
+  .task-edit__title {
+    float: left;
+  }
+  .text-badge {
+    float: right;
+    margin-right: 5%;
+  }
+
+  .form-label {
+    font-weight: bold;
+  }
+  .button[type='submit'] {
+    float: right;
+    margin-right: 6.5%;
+    margin-top: 10px;
+  }
+}

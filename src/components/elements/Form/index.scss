@@ -1,0 +1,47 @@
+@import '../../../assets/styles/scss/vars.scss';
+@import '../../../assets/styles/scss/mixins.scss';
+
+.form-control {
+  padding: 5px;
+  border-radius: 10px;
+  border: 2px solid $dark-bg;
+  background: $light-bg;
+  color: $common-text;
+  outline: none;
+  display: inline-block;
+}
+
+.form-checkbox {
+  appearance: none;
+  & + label {
+    position: relative;
+  }
+  &:checked + label::before {
+    content: '';
+    height: 6px;
+    width: 6px;
+    box-sizing: border-box;
+    border-radius: 1px;
+    background: $common-text;
+    position: absolute;
+    left: -15.88px;
+    top: 8px;
+  }
+
+  & + label::after {
+    content: '';
+    height: 8px;
+    width: 8px;
+    border-radius: 3px;
+    float: left;
+    margin-top: 5px;
+    border: 2px solid $common-text;
+  }
+}
+
+@include invalidBounceKeyframes(2);
+
+.form-control.invalid {
+  border-color: $error;
+  animation: 1s invalidBounce;
+}

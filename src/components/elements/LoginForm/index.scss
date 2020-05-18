@@ -1,0 +1,26 @@
+@import '../../../assets/styles/scss/vars.scss';
+@import '../../../assets/styles/scss/mixins.scss';
+
+.login {
+  width: 100vw;
+  .content {
+    width: 20vw;
+    position: absolute;
+    bottom: 50%;
+    right: 50%;
+    transform: translate(50%, 50%);
+  }
+  &-form {
+    display: flex;
+    flex-direction: column;
+    .form-control {
+      margin-top: 10px;
+      height: 35px;
+      font-size: 1.2rem;
+    }
+    .button {
+      width: 100%;
+      margin: 30px auto;
+    }
+  }
+}

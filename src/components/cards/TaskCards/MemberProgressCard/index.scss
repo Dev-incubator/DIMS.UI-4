@@ -1,0 +1,13 @@
+@import '../../../../assets/styles/scss/vars.scss';
+@import '../../../../assets/styles/scss/mixins.scss';
+
+.task-progress {
+  .task-card__title {
+    float: left;
+    padding: 3px;
+    border-bottom: 1px solid $dark-bg;
+  }
+  .task-card__header {
+    @include clearfix();
+  }
+}

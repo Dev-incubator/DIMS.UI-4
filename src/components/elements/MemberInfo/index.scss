@@ -1,0 +1,132 @@
+@import '../../../assets/styles/scss/vars.scss';
+@import '../../../assets/styles/scss/mixins.scss';
+
+.member-info {
+  width: 80vw;
+  height: 90vh;
+
+  &__header {
+    background-color: $primary-bg;
+    position: relative;
+
+    .button {
+      position: absolute;
+      height: 100%;
+      top: 0;
+      width: 50px;
+      background-color: $highlight-bg;
+      color: $common-text;
+      font-size: 1.5rem;
+      padding-left: 0;
+    }
+
+    .date-badge {
+      float: right;
+      margin-left: 50px;
+      transform: scale(1.2);
+    }
+
+    .text-badge {
+      float: right;
+      transform: scale(1.2);
+
+      margin-top: 7px;
+    }
+
+    padding: 25px 0;
+    padding-right: 70px;
+    @include clearfix;
+  }
+
+  &__title {
+    float: left;
+    font-size: 2rem;
+    margin: 0;
+    margin-left: 80px;
+  }
+
+  &__contacts {
+    font-size: 1.4rem;
+    margin: 3% 70px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background: $primary-bg;
+    padding: 20px 20px;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    & > * {
+      width: 50%;
+      &:first-child {
+        justify-self: flex-start;
+        text-align: left;
+      }
+      &:last-child {
+        justify-self: flex-end;
+        text-align: right;
+      }
+    }
+
+    .icon-envelope {
+      font-size: 1.3rem;
+    }
+  }
+
+  .address {
+    margin: 2%;
+    margin-left: 90px;
+    font-size: 1.4rem;
+  }
+
+  .flex-column {
+    float: left;
+    width: 35%;
+    box-sizing: border-box;
+    &:first-child {
+      margin-right: 5%;
+    }
+    font-size: 1.4rem;
+  }
+  &__additional-info {
+    margin: 0 auto;
+    width: calc(100% - 140px);
+    box-sizing: border-box;
+    padding: 2% 5%;
+    margin-top: 3%;
+    background: $primary-bg;
+    .date-badge {
+      font-size: 1.4rem;
+    }
+
+    @include clearfix;
+  }
+
+  .button-block {
+    position: absolute;
+    bottom: 50px;
+    right: 70px;
+    width: calc(100% - 140px);
+    .button:not(.button_primary) {
+      margin-left: 20px;
+      float: right;
+    }
+
+    .button_primary {
+      float: left;
+      margin-right: 20px;
+    }
+  }
+
+  .flex-column {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    & > div {
+      margin-bottom: 20px;
+    }
+  }
+}

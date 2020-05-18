@@ -1,0 +1,86 @@
+@import '../../../assets/styles/scss/vars.scss';
+@import '../../../assets/styles/scss/mixins.scss';
+
+.task-edit {
+  padding: 0;
+  &__header {
+    background: $primary-bg;
+    margin: 0;
+    padding: 20px;
+    padding-left: 50px;
+    font-size: 1.5rem;
+  }
+  &__title {
+    padding: 0;
+    margin: 0;
+  }
+  &__body {
+    padding: 20px 50px 30px;
+    @include clearfix();
+  }
+  &__dates {
+    float: left;
+    width: 50%;
+    padding-right: 20%;
+    box-sizing: border-box;
+    display: flex;
+    .form-control {
+      display: block;
+      margin-right: 20px;
+      margin-top: 2px;
+    }
+  }
+
+  .form-label {
+    font-weight: bold;
+  }
+  &__members {
+    float: left;
+    margin-top: 3vh;
+    width: 48%;
+    border: 2px solid $primary-bg;
+    padding: 5px 10px;
+
+    .checkbox-group {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      height: 28vh;
+      flex-wrap: wrap;
+      overflow-x: auto;
+      & > * {
+        width: 40%;
+      }
+    }
+  }
+  &__description {
+    float: left;
+    width: 45%;
+    height: 42vh;
+    margin-right: 40px;
+    .form-group {
+      height: 100%;
+      width: 100%;
+      margin-top: -3px;
+      textarea {
+        margin-top: 3px;
+        height: 100%;
+        width: 100%;
+        resize: none;
+        font-size: 1.1rem;
+        box-sizing: border-box;
+      }
+    }
+  }
+  .button[type='submit'] {
+    float: right;
+    margin-right: 5%;
+  }
+  width: 70vw;
+  height: 70vh;
+
+  .form-control {
+    padding-left: 9px;
+    font-size: 1.12rem;
+  }
+}

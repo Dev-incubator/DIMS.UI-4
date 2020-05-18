@@ -1,0 +1,32 @@
+@import '../../../assets/styles/scss/vars.scss';
+@import '../../../assets/styles/scss/mixins.scss';
+
+.assign-form {
+  padding: 30px;
+  width: 31vw;
+  height: 30vh;
+  .form-label {
+    font-weight: bold;
+  }
+  .checkbox-group {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow-x: auto;
+    height: 20vh;
+    border-radius: 5px;
+    border: 2px solid $primary-bg;
+    padding: 10px;
+    & > * {
+      margin-right: 20px;
+    }
+    & *:last-child {
+      margin-right: 10px;
+    }
+  }
+  .button_secondary {
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+}
