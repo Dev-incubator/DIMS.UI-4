@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/Dev-incubator/DIMS.UI-4.svg?branch=master)](https://travis-ci.org/Dev-incubator/DIMS.UI-4)
+[![Coverage Status](https://coveralls.io/repos/github/Dev-incubator/DIMS.UI-4/badge.svg?branch=master)](https://coveralls.io/github/Dev-incubator/DIMS.UI-4?branch=master)
 
 
 The link to principal idea of design - [design](https://symu.co/freebies/templates-4/merkury-dashboard-psd-template/). **You do not have to follow it, just use it as a guide**
