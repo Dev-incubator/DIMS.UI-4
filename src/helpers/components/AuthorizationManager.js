@@ -1,48 +1,36 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import AuthenticationManager from './AuthenticationManager';
 import { UserContext } from './UserContextConsumer';
+import getStateMembers from '../getStateMembers';
+import useAuthorization from '../hooks/useAuthorization';
 
-class AuthorizationManager extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      authorizedUser: { role: 'guest', userId: 'guest' },
-      roles: ['guest', 'member', 'admin', 'mentor'],
-    };
-  }
+const AuthorizationManager = (props) => {
+  const { children, onAuth, members } = props;
 
-  authorize = (role, userId) => {
-    const { roles } = this.state;
-    if (!role || !userId) {
-      this.setState({ authorizedUser: JSON.parse(localStorage.getItem('userInfo')) });
-    }
-    if (roles.includes(role)) {
-      localStorage.setItem('userInfo', JSON.stringify({ role, userId }));
-      this.setState({ authorizedUser: { role, userId } });
-    }
-  };
+  const [user, setUser, logOut] = useAuthorization({ role: 'guest', userId: 'guest' });
 
-  deleteUserInfo = () => {
-    localStorage.removeItem('userInfo');
-    this.setState({ authorizedUser: { role: 'guest', userId: 'guest' } });
-  };
+  const { role } = user;
 
-  render() {
-    const { children } = this.props;
-    const { authorizedUser } = this.state;
-    return (
-      <UserContext.Provider value={authorizedUser}>
-        <AuthenticationManager authorize={this.authorize} deleteUserInfo={this.deleteUserInfo}>
-          {children}
-        </AuthenticationManager>
-      </UserContext.Provider>
-    );
-  }
-}
+  onAuth({
+    members,
+    role,
+  });
+
+  return (
+    <UserContext.Provider value={user}>
+      <AuthenticationManager authorize={setUser} deleteUserInfo={logOut}>
+        {children}
+      </AuthenticationManager>
+    </UserContext.Provider>
+  );
+};
 
 AuthorizationManager.propTypes = {
   children: PropTypes.node.isRequired,
+  onAuth: PropTypes.func.isRequired,
+  members: PropTypes.object.isRequired,
 };
 
-export default AuthorizationManager;
+export default connect(getStateMembers)(AuthorizationManager);

@@ -42,7 +42,7 @@ const MemberCard = (props) => {
     edit: editDefault,
   } = props;
 
-  const { dispatch } = useDispatch();
+  const dispatch = useDispatch();
 
   const age = calculateAge(birthDate);
   const modal = useRef({});
@@ -74,7 +74,7 @@ const MemberCard = (props) => {
 
   return (
     <>
-      <CollapsibleCard id={id} cardClass='member' collapsed={collapsed} open={open} close={close}>
+      <CollapsibleCard.Card id={id} cardClass='member' collapsed={collapsed} open={open} close={close}>
         <CollapsibleCard.Header>
           <CollapsibleCard.Title>
             <b>{firstName}</b>
@@ -83,7 +83,7 @@ const MemberCard = (props) => {
           {matchMaxWidth('550px') || (
             <div>
               <TextBadge>{direction}</TextBadge>
-              {matchMaxWidth('1000px') || <DateBadge date={startDate} type={dateTypes.startDate} />}
+              {matchMaxWidth('750px') || <DateBadge date={startDate} type={dateTypes.startDate} />}
             </div>
           )}
         </CollapsibleCard.Header>
@@ -124,7 +124,7 @@ const MemberCard = (props) => {
             )}
           </ButtonGroup>
         </CollapsibleCard.Body>
-      </CollapsibleCard>
+      </CollapsibleCard.Card>
       <Modal ref={modal} className='member-info' onClose={editOff}>
         <MemberInfo
           edit={edit}

@@ -24,15 +24,12 @@ function TaskEditButton(props) {
   };
 
   const onSubmitHandler = (data) => {
-    return onSubmit(data)
-      .then((res) => {
-        handleClose();
-        reload();
-        return res;
-      })
-      .then((res) => {
-        return res;
-      });
+    return onSubmit(data).then((res) => {
+      reload();
+      onClose();
+      handleClose();
+      return res;
+    });
   };
 
   return (

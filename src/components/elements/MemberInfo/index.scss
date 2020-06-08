@@ -2,12 +2,18 @@
 @import '../../../assets/styles/scss/mixins.scss';
 
 .member-info {
-  width: 65vw;
+  width: 68vw;
   min-height: 20vh;
   max-height: 90vh;
   padding: 0 0 30px !important;
   overflow-y: auto;
   overflow-x: hidden;
+
+  @media screen and (max-width: 1300px) {
+    & {
+      width: 80vw;
+    }
+  }
 
   @media screen and (max-width: 1000px) {
     .address {
@@ -34,8 +40,7 @@
   &__header {
     position: relative;
     display: flex;
-    padding: 25px 0;
-    padding-right: 50px;
+    padding: 25px 50px;
     background-color: $primary-bg;
 
     align-items: center;
@@ -46,9 +51,8 @@
       align-items: center;
     }
 
-    @media screen and (max-width: 1100px) {
+    @media screen and (max-width: 1200px) {
       & {
-        display: flex;
         padding: 5px;
         flex-wrap: wrap;
         justify-content: center;
@@ -59,8 +63,7 @@
         display: none;
       }
 
-      .text-badge,
-      .date-badge {
+      .text-badge {
         margin: 10px 20px;
       }
     }
@@ -76,20 +79,14 @@
       font-size: 1.5rem;
     }
 
-    .date-badge {
-      margin-left: 50px;
-      transform: scale(1.2);
-    }
-
     .text-badge {
-      margin-top: 7px;
+      margin-right: 30px;
       transform: scale(1.2);
     }
   }
 
   &__title {
     margin: 0;
-    margin-left: 3vw;
     font-size: 2.2rem;
   }
 
@@ -194,6 +191,26 @@
       display: flex;
       & > * {
         margin: 0 5px;
+      }
+    }
+    @media screen and (max-width: 700px) {
+      .button_primary {
+        & > span {
+          display: none;
+        }
+        width: 40px;
+      }
+    }
+
+    @media screen and (max-width: 1000px) {
+      .button_primary {
+        & > span {
+          display: unset;
+        }
+        & > svg {
+          display: none;
+        }
+        width: 95px;
       }
     }
   }

@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 function LogOut({ logOut }) {
-  logOut();
+  useEffect(() => {
+    logOut();
+  });
   return <Redirect to='/' />;
 }
 

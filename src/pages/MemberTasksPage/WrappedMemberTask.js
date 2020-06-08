@@ -14,7 +14,7 @@ export default function wrappedMemberTask({
   taskId,
   taskName,
   taskDescription,
-  state,
+  status,
   taskStart,
   taskDeadline,
   assignedTo,
@@ -31,7 +31,7 @@ export default function wrappedMemberTask({
             taskName={taskName}
             members={members}
             taskDescription={taskDescription}
-            state={state}
+            status={status}
             taskStart={taskStart}
             taskDeadline={taskDeadline}
             taskSet={taskSet}

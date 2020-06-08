@@ -31,6 +31,17 @@ export default function changeColorScheme({
     }),
   );
   changeColorScheme.currentTheme = name;
+  changeColorScheme.currentColors = {
+    primaryBg,
+    highlightBg,
+    cardBg,
+    darkBg,
+    lightBg,
+    headerBg,
+    commonText,
+    lightText,
+    mutedText,
+  };
 }
 
 const themes = {

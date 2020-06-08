@@ -69,7 +69,7 @@ class Form extends React.Component {
     inputs.forEach((input) => {
       valuesData[input.name] = {
         id: input.name,
-        value: input.value,
+        value: input.defaultValue || input.value,
         defaultValue: setFormDefaultValue(values, input),
       };
     });
@@ -194,14 +194,10 @@ class Form extends React.Component {
     if (response) {
       if (response.status === 200) {
         this.successNotification('Success', 'Data sent and accepted by server');
-        return;
+      } else if (response.status) {
+        this.errorNotification('Server error', response && response.toString());
       }
-
-      this.errorNotification('Server error', response && response.toString());
-      return;
     }
-
-    this.errorNotification('Form error', response && response.toString());
   };
 
   onResponseError = (error) => {
@@ -222,9 +218,7 @@ class Form extends React.Component {
 
     if (validateForm(values, inputs, this.onValidationFail)) {
       if (onSubmitHandler) {
-        onSubmitHandler(formatFormValues(values))
-          .then(this.onResponseReceived)
-          .catch(this.onResponseError);
+        onSubmitHandler(formatFormValues(values)).then(this.onResponseReceived).catch(this.onResponseError);
       }
     }
   };

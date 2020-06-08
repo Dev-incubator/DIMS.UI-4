@@ -29,7 +29,7 @@
     background: $highlight-bg;
   }
 
-  .state {
+  .status {
     padding-top: 5px;
     padding-bottom: 5px;
     background: $highlight-bg;
@@ -74,19 +74,16 @@
   .button-block {
     display: flex;
     justify-content: space-between;
-    & > * {
-      margin-left: 10px;
-    }
 
     .button-block {
       display: flex;
       & > * {
-        margin-left: 10px;
+        margin-right: 10px;
       }
     }
-  }
 
-  .button_invisible {
-    padding: 20px;
+    .button_invisible {
+      padding: 20px;
+    }
   }
 }

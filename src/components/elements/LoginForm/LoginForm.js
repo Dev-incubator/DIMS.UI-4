@@ -4,10 +4,15 @@ import loginFormInputAttributes from './loginFormInputAttributes';
 import Form from '../Form/Form';
 import Button from '../Button';
 import logo from '../../../assets/images/devinc.gif';
+import errorNotification from '../../../helpers/formHelpers/errorNotification';
 
 const LoginForm = (props) => {
-  const onSubmit = ({ userName, password }) => {
-    props.logIn(userName, password);
+  const onSubmit = async ({ userName, password }) => {
+    const result = await props.logIn(userName, password);
+    if (result.status === 'fail') {
+      errorNotification('Authentication failed', result.message);
+    }
+    return { data: '', status: 200 };
   };
 
   return (

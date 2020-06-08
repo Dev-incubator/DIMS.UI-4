@@ -4,5 +4,6 @@
 .card {
   & > [class*='__body'] {
     background: $card-bg;
+    transform-origin: top;
   }
 }

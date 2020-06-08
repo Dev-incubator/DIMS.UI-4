@@ -18,10 +18,10 @@ function AdminRoutes({ userId }) {
         <MembersManagerPage />
       </Route>
       <Route exact path='/members/:id/tasks'>
-        <MemberTasksPage />
+        <MemberTasksPage taskSet='user' />
       </Route>
       <Route exact path='/members/:id/tasks/id:open?'>
-        <MemberTasksPage />
+        <MemberTasksPage taskSet='user' />
       </Route>
       <Route exact path='/members/:id/progress'>
         <MemberProgressPage />

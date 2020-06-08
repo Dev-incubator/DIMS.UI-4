@@ -10,7 +10,14 @@ function MemberProgressCard(props) {
   const { taskName, trackNote, trackDate, collapsed, id, open, close } = props;
 
   return (
-    <CollapsibleCard id={id} className='task-progress' cardClass='task' collapsed={collapsed} open={open} close={close}>
+    <CollapsibleCard.Card
+      id={id}
+      className='task-progress'
+      cardClass='task'
+      collapsed={collapsed}
+      open={open}
+      close={close}
+    >
       <CollapsibleCard.Header>
         <CollapsibleCard.Title>{taskName}</CollapsibleCard.Title>
         <DateBadge type={dateTypes.trackStart} date={trackDate} />
@@ -18,7 +25,7 @@ function MemberProgressCard(props) {
       <CollapsibleCard.Body>
         <CollapsibleCard.Description>{trackNote}</CollapsibleCard.Description>
       </CollapsibleCard.Body>
-    </CollapsibleCard>
+    </CollapsibleCard.Card>
   );
 }
 

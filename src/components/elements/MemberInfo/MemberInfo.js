@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 
-import { ReactComponent as BackIcon } from '../../../assets/icons/Back.svg';
 import { ReactComponent as TasksIcon } from '../../../assets/icons/Tasks.svg';
 import { ReactComponent as ProgressIcon } from '../../../assets/icons/Progress.svg';
 import { ReactComponent as SkypeIcon } from '../../../assets/icons/skype.svg';

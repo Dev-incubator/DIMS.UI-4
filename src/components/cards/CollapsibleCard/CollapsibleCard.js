@@ -3,54 +3,53 @@ import PropTypes from 'prop-types';
 
 import CollapsedCard from './CollapsedCard';
 import CollapsibleCardBody from './CollapsibleCardBody';
-import CollapsibleCardTitle from './CollapsibleCardTitle';
 import CollapsibleCardDescription from './CollapsibleCardDescription';
 
-class CollapsibleCard extends React.PureComponent {
-  static Header = CollapsedCard;
+const CollapsibleCard = (props) => {
+  const { id, collapsed, open, close, cardClass, children, className } = props;
 
-  static Body = CollapsibleCardBody;
+  const onClick = (isCollapsed) => {
+    return isCollapsed ? open(id) : close(id);
+  };
 
-  static Title = CollapsibleCardTitle;
+  return (
+    <>
+      <article id={id} className={`card ${className || ''} ${cardClass}-card${!collapsed ? ' open' : ''}`}>
+        {React.Children.map(children, (child) => {
+          if (!child) {
+            return child;
+          }
 
-  static Description = CollapsibleCardDescription;
-
-  render() {
-    const { id, collapsed, open, close, cardClass, children, className } = this.props;
-
-    const onClick = (isCollapsed) => {
-      return isCollapsed ? open(id) : close(id);
-    };
-
-    return (
-      <>
-        <article id={id} className={`card ${className || ''} ${cardClass}-card${!collapsed ? ' open' : ''}`}>
-          {React.Children.map(children, (child) => {
+          return child.type === CollapsedCard
+            ? React.cloneElement(child, {
+                onClick,
+                collapsed,
+                cardClass,
+              })
+            : null;
+        })}
+        {!collapsed &&
+          React.Children.map(children, (child) => {
             if (!child) {
               return child;
             }
-            return child.type === CollapsibleCard.Header
-              ? React.cloneElement(child, { onClick, collapsed, cardClass })
-              : null;
+
+            if (child.type === CollapsibleCardBody || child.type === CollapsibleCardDescription) {
+              return React.cloneElement(child, {
+                cardClass,
+              });
+            }
+
+            if (child.type === CollapsedCard) {
+              return null;
+            }
+
+            return child;
           })}
-          {!collapsed &&
-            React.Children.map(children, (child) => {
-              if (!child) {
-                return child;
-              }
-              if (child.type === CollapsibleCard.Body || child.type === CollapsibleCard.Description) {
-                return React.cloneElement(child, { cardClass });
-              }
-              if (child.type === CollapsibleCard.Header) {
-                return null;
-              }
-              return child;
-            })}
-        </article>
-      </>
-    );
-  }
-}
+      </article>
+    </>
+  );
+};
 
 CollapsibleCard.defaultProps = {
   cardClass: 'card',

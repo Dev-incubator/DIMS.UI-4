@@ -6,20 +6,19 @@ import masks from './maskHelpers/masks';
 import setUsersForTask from './setUsersForTask';
 
 export default async function editAndAssignTask(
-  store,
-  { taskName, taskDescription, taskStart, taskDeadline, members },
+  dispatch,
+  { taskName, taskDescription, taskStart, taskDeadline, members, members_default },
   taskId,
-  prevAssigned = [],
 ) {
   const assignedTo = checkboxValueSeparator(members);
   if (
-    !prevAssigned.length ||
+    !members_default.length ||
     !compareObjects(
       assignedTo,
-      prevAssigned.map((el) => el.userId),
+      members_default.map((el) => el.userId),
     )
   ) {
-    await setUsersForTask(taskId, assignedTo, prevAssigned);
+    await setUsersForTask(dispatch, taskId, assignedTo, members_default);
   }
 
   return Client.editTask(

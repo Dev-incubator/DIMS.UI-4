@@ -25,7 +25,7 @@ function Routes(props) {
 
 Routes.propTypes = {
   role: PropTypes.string.isRequired,
-  userId: PropTypes.string.isRequired,
+  userId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   location: PropTypes.object.isRequired,
 };
 

@@ -80,7 +80,7 @@ export default class FirebaseFaker {
   static async generateUsers() {
     const users = await Client.getMembers();
     const json = [];
-    await Promise.all(
+    await Promise.allSettled(
       Object.entries(users).map(async ([id, doc]) => {
         const login = (doc.firstName + doc.lastName).toLowerCase();
         const password = faker.internet.password();

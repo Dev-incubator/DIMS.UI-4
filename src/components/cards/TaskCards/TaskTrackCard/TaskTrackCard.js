@@ -36,14 +36,21 @@ function TaskTrackCard(props) {
   };
 
   const onEdit = ({ trackDate, trackNote }) => {
-    return Client.editTrack(id, trackDate, trackNote).then((response) => {
+    return Client.editTrack(id, trackNote, trackDate).then((response) => {
       reload();
       return response;
     });
   };
 
   return (
-    <CollapsibleCard id={id} className='track-card' cardClass='task' collapsed={collapsed} open={open} close={close}>
+    <CollapsibleCard.Card
+      id={id}
+      className='track-card'
+      cardClass='task'
+      collapsed={collapsed}
+      open={open}
+      close={close}
+    >
       <CollapsibleCard.Header>
         <CollapsibleCard.Title>{taskName}</CollapsibleCard.Title>
         <DateBadge type={dateTypes.trackStart} date={trackDate} />
@@ -75,7 +82,7 @@ function TaskTrackCard(props) {
           />
         </ButtonGroup>
       </CollapsibleCard.Body>
-    </CollapsibleCard>
+    </CollapsibleCard.Card>
   );
 }
 

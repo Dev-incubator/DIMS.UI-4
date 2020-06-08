@@ -4,23 +4,21 @@ import { Provider } from 'react-redux';
 import AuthorizationManager from './helpers/components/AuthorizationManager';
 import Routes from './Routes';
 import store from './redux';
-import Preloader from './helpers/components/Preloader';
 import UserContextConsumer from './helpers/components/UserContextConsumer';
+import usePreloader from './helpers/hooks/usePreloader';
 
 const App = () => {
   return (
     <Provider store={store}>
-      <Preloader>
-        <Router>
-          <AuthorizationManager>
-            <UserContextConsumer>
-              {({ role, userId }) => {
-                return <Routes role={role} userId={userId} />;
-              }}
-            </UserContextConsumer>
-          </AuthorizationManager>
-        </Router>
-      </Preloader>
+      <Router>
+        <AuthorizationManager onAuth={usePreloader}>
+          <UserContextConsumer>
+            {({ role, userId }) => {
+              return <Routes role={role} userId={userId} />;
+            }}
+          </UserContextConsumer>
+        </AuthorizationManager>
+      </Router>
     </Provider>
   );
 };

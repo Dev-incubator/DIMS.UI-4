@@ -2,7 +2,6 @@
 @import '../../../assets/styles/scss/mixins.scss';
 
 .modal {
-  display: none;
   position: fixed;
   top: 50vh;
   left: 50vw;
@@ -10,10 +9,9 @@
   transform: translate(-50%, -50%);
   background: $light-bg;
   z-index: 101;
+  opacity: 0;
 
   &.show {
-    display: block;
-
     & + .modal-shadow {
       position: fixed;
       top: 0;

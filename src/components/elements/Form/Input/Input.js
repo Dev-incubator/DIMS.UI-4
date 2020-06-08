@@ -45,9 +45,14 @@ function Input(props) {
     onInput(name, value);
   };
 
-  const onKeyPressHandler = ({ target: { value }, key, preventDefault }) => {
+  const onKeyPressHandler = (event) => {
+    const {
+      target: { value },
+      key,
+    } = event;
+
     if (!byCharValidator(value + key)) {
-      preventDefault();
+      event.preventDefault();
     }
   };
 
