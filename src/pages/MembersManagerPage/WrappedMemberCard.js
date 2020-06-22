@@ -1,8 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import UserContextConsumer from '../../helpers/components/UserContextConsumer';
 import MemberCard from '../../components/cards/MemberCard';
 
-export default function WrappedMemberCard({
+function WrappedMemberCard({
   id,
   firstName,
   lastName,
@@ -20,7 +22,6 @@ export default function WrappedMemberCard({
   collapsed,
   open,
   close,
-  reloadMembers,
 }) {
   return (
     <UserContextConsumer>
@@ -51,3 +52,26 @@ export default function WrappedMemberCard({
     </UserContextConsumer>
   );
 }
+
+WrappedMemberCard.propTypes = {
+  id: PropTypes.string.isRequired,
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  startDate: PropTypes.instanceOf(Date).isRequired,
+  direction: PropTypes.string.isRequired,
+  mobilePhone: PropTypes.string.isRequired,
+  skype: PropTypes.string.isRequired,
+  address: PropTypes.string.isRequired,
+  sex: PropTypes.string.isRequired,
+  birthDate: PropTypes.instanceOf(Date).isRequired,
+  education: PropTypes.string.isRequired,
+  universityAverageScore: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+  mathScore: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+
+  open: PropTypes.func.isRequired,
+  close: PropTypes.func.isRequired,
+  collapsed: PropTypes.bool.isRequired,
+};
+
+export default WrappedMemberCard;

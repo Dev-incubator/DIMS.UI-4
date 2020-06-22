@@ -1,4 +1,4 @@
-import checkFormNames from '../../helpers/checkFormNames';
+import checkFormNames from '../../helpers/formHelpers/checkFormNames';
 
 describe('checkFormNames', () => {
   test('Returns false if names repeat', () => {

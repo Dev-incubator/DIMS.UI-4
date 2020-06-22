@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Validator from '../Validator';
 import concatPath from '../concatPath';
+import getValue from './getValue';
 
 const apiPath = process.env.REACT_APP_APIPATH;
 class Client {
@@ -179,24 +180,26 @@ class Client {
     let allUserTasks;
     let userTasks;
 
-    const resultArray = await Promise.allSettled(
-      usersIds.map(async (userId) => {
-        allUserTasks = await this.getUserTasks(userId);
+    const resultArray = (
+      await Promise.allSettled(
+        usersIds.map(async (userId) => {
+          allUserTasks = await this.getUserTasks(userId);
 
-        userTasks = Object.keys(allUserTasks).find((memberTaskId) => {
-          return allUserTasks[memberTaskId].taskId.toString() === taskId.toString();
-        });
+          userTasks = Object.keys(allUserTasks).find((memberTaskId) => {
+            return allUserTasks[memberTaskId].taskId.toString() === taskId.toString();
+          });
 
-        if (!userTasks || !userTasks.length) {
-          return null;
-        }
-        return {
-          userId,
-          taskId,
-          memberTaskId: userTasks,
-        };
-      }),
-    );
+          if (!userTasks || !userTasks.length) {
+            return null;
+          }
+          return {
+            userId,
+            taskId,
+            memberTaskId: userTasks,
+          };
+        }),
+      )
+    ).map(getValue);
     return resultArray.filter((element) => {
       return !!element;
     });
@@ -207,16 +210,23 @@ class Client {
     const assignedTo = [];
     let userTasks;
 
-    await Promise.allSettled(
-      Object.entries(allUsers).map(async ([userId, user]) => {
-        userTasks = await this.getUserTasks(userId);
-        Object.values(userTasks).forEach((userTask) => {
-          if (userTask.taskId.toString() === taskId.toString()) {
-            assignedTo.push({ userId, firstName: user.firstName, lastName: user.lastName, memberTaskId: userTask.id });
-          }
-        });
-      }),
-    );
+    (
+      await Promise.allSettled(
+        Object.entries(allUsers).map(async ([userId, user]) => {
+          userTasks = await this.getUserTasks(userId);
+          Object.values(userTasks).forEach((userTask) => {
+            if (userTask.taskId.toString() === taskId.toString()) {
+              assignedTo.push({
+                userId,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                memberTaskId: userTask.id,
+              });
+            }
+          });
+        }),
+      )
+    ).map(getValue);
     return assignedTo;
   }
 

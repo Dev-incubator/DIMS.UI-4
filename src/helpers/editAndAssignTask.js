@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import Client from './Client';
 import compareObjects from './compareObjects';
 import checkboxValueSeparator from './formHelpers/checkboxValueSeparator';

@@ -24,7 +24,7 @@ class MembersManagerPage extends React.Component {
   };
 
   renderMembers(filterString) {
-    let { members } = this.props;
+    const { members } = this.props;
 
     if (!Object.keys(members).length) {
       return [];
@@ -40,18 +40,17 @@ class MembersManagerPage extends React.Component {
     }
 
     const membersList = membersArray.map(([id, data]) => {
-      return this.renderMember(id, data);
+      return <WrappedMemberCard id={id} {...data} />;
     });
 
     return membersList;
   }
 
-  renderMember(id, data) {
-    return <WrappedMemberCard id={id} {...data} />;
-  }
-
   render() {
-    const { members } = this.props;
+    const {
+      members,
+      match: { path },
+    } = this.props;
     const { filterString } = this.state;
 
     return (
@@ -66,7 +65,7 @@ class MembersManagerPage extends React.Component {
                 role={role}
                 title='Members'
                 filterFunction={this.setFilterString}
-                navItems={getNavItems({ role, userId }, this.props.match.path)}
+                navItems={getNavItems({ role, userId }, path)}
               />
             );
           }}
@@ -88,6 +87,9 @@ class MembersManagerPage extends React.Component {
 
 MembersManagerPage.propTypes = {
   members: PropTypes.objectOf(PropTypes.object).isRequired,
+  match: PropTypes.shape({
+    path: PropTypes.string,
+  }).isRequired,
 };
 
 export default withRouter(

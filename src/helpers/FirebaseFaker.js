@@ -1,6 +1,7 @@
 import faker from 'faker';
 import md5 from 'md5';
 import Client from './Client';
+import getValue from './Client/getValue';
 
 export default class FirebaseFaker {
   static generateMembers() {
@@ -80,14 +81,16 @@ export default class FirebaseFaker {
   static async generateUsers() {
     const users = await Client.getMembers();
     const json = [];
-    await Promise.allSettled(
-      Object.entries(users).map(async ([id, doc]) => {
-        const login = (doc.firstName + doc.lastName).toLowerCase();
-        const password = faker.internet.password();
-        await FirebaseFaker.createUser(login, password, 'member', id);
-        json.push({ login, password });
-      }),
-    );
+    (
+      await Promise.allSettled(
+        Object.entries(users).map(async ([id, doc]) => {
+          const login = (doc.firstName + doc.lastName).toLowerCase();
+          const password = faker.internet.password();
+          await FirebaseFaker.createUser(login, password, 'member', id);
+          json.push({ login, password });
+        }),
+      )
+    ).map(getValue);
     saveAsFile(JSON.stringify(json), 'membersPasswords');
   }
 }

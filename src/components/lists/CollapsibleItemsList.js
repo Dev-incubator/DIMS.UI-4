@@ -40,6 +40,12 @@ class CollapsibleItemsList extends Component {
 
   open = (id) => {
     const { open, items } = this.state;
+    const { onFail } = this.props;
+
+    if (!items[id]) {
+      onFail();
+      return;
+    }
 
     if (open && items[open]) {
       items[open].collapsed = true;
@@ -51,6 +57,11 @@ class CollapsibleItemsList extends Component {
 
   close = (id) => {
     const { items } = this.state;
+    const { onFail } = this.props;
+    if (!items[id]) {
+      onFail();
+      return;
+    }
     items[id].collapsed = true;
 
     this.setState({ items, open: null });
@@ -107,11 +118,15 @@ class CollapsibleItemsList extends Component {
 
 CollapsibleItemsList.defaultProps = {
   open: null,
+  onFail: () => {
+    document.location.href = '/404';
+  },
 };
 
 CollapsibleItemsList.propTypes = {
   open: PropTypes.string,
   items: PropTypes.arrayOf(PropTypes.element).isRequired,
+  onFail: PropTypes.func,
 };
 
 export default CollapsibleItemsList;

@@ -1,12 +1,12 @@
 @import '../../../assets/styles/scss/vars.scss';
 @import '../../../assets/styles/scss/mixins.scss';
 
+@include toast-header();
+
 .toast {
   width: 300px;
   margin: 10px;
   background-color: $light-bg;
-
-  @include toast-header;
 
   &__header {
     padding: 10px 20px;

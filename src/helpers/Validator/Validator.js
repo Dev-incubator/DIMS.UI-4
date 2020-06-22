@@ -67,10 +67,10 @@ const Validator = {
     const formattedPhone = mask.split('');
     const phoneNumbers = phone.replace(/[^0-9]/g, '').split('');
     let phoneIndex = 0;
-    for (let index = 0; index < mask.length; index++) {
+    for (let index = 0; index < mask.length; index += 1) {
       if (formattedPhone[index] === '9') {
         formattedPhone[index] = phoneNumbers[phoneIndex];
-        phoneIndex++;
+        phoneIndex += 1;
       }
     }
     return formattedPhone.join('');

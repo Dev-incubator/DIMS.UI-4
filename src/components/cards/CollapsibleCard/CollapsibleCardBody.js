@@ -29,6 +29,10 @@ function CollapsibleCardBody(props) {
   );
 }
 
+CollapsibleCardBody.defaultProps = {
+  cardClass: '',
+};
+
 CollapsibleCardBody.propTypes = {
   cardClass: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,

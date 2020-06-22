@@ -2,18 +2,12 @@
 @import '../../../assets/styles/scss/mixins.scss';
 
 .member-info {
-  width: 68vw;
+  width: 65vw;
   min-height: 20vh;
   max-height: 90vh;
   padding: 0 0 30px !important;
   overflow-y: auto;
   overflow-x: hidden;
-
-  @media screen and (max-width: 1300px) {
-    & {
-      width: 80vw;
-    }
-  }
 
   @media screen and (max-width: 1000px) {
     .address {
@@ -40,8 +34,17 @@
   &__header {
     position: relative;
     display: flex;
-    padding: 25px 50px;
+    padding: 25px 0;
+    padding-right: 50px;
     background-color: $primary-bg;
+
+    align-items: center;
+    justify-content: space-between;
+
+    & > div {
+      display: flex;
+      align-items: center;
+    }
 
     align-items: center;
     justify-content: space-between;
@@ -64,7 +67,7 @@
       }
 
       .text-badge {
-        margin: 10px 20px;
+        margin: 0 20px;
       }
     }
 
@@ -79,15 +82,27 @@
       font-size: 1.5rem;
     }
 
+    .date-badge {
+      transform: scale(1.2);
+    }
+
     .text-badge {
       margin-right: 30px;
+      margin-top: 7px;
       transform: scale(1.2);
     }
   }
 
   &__title {
     margin: 0;
+    margin-left: 3vw;
     font-size: 2.2rem;
+
+    @media screen and (min-width: 1200px) and (max-width: 1300px) {
+      & {
+        width: 200px;
+      }
+    }
   }
 
   hr {
@@ -104,7 +119,7 @@
     text-align: center;
     justify-content: center;
 
-    @media screen and (max-width: 950px) {
+    @media screen and (max-width: 1200px) {
       flex-wrap: wrap;
       & > * {
         width: auto !important;
@@ -186,31 +201,22 @@
 
     display: flex;
     justify-content: space-between;
-
-    .button-block {
+    & > .button-block {
       display: flex;
       & > * {
         margin: 0 5px;
       }
-    }
-    @media screen and (max-width: 700px) {
-      .button_primary {
-        & > span {
-          display: none;
-        }
-        width: 40px;
-      }
-    }
 
-    @media screen and (max-width: 1000px) {
-      .button_primary {
-        & > span {
-          display: unset;
+      @media screen and (max-width: 950px) {
+        & {
+          width: 100%;
+          justify-content: center;
         }
-        & > svg {
-          display: none;
+        &:last-child > .button:first-child {
+          border: 2px solid $primary-bg;
+          width: 100px;
+          text-decoration: none;
         }
-        width: 95px;
       }
     }
   }

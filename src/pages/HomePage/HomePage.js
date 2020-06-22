@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import Helmet from 'react-helmet';
 import { withRouter } from 'react-router-dom';
@@ -33,7 +34,7 @@ function HomePage({ match }) {
                   <strong>Admin</strong>, to manage and create new members.
                 </li>
                 <li>
-                  <strong>Mentor</strong>, to create and assign tasks, see member's progress.
+                  <strong>Mentor</strong>, to create and assign tasks, see member&apos;s progress.
                 </li>
                 <li>
                   <strong>Member</strong>, to see own tasks and manage subtasks.

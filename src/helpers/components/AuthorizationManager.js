@@ -30,7 +30,7 @@ const AuthorizationManager = (props) => {
 AuthorizationManager.propTypes = {
   children: PropTypes.node.isRequired,
   onAuth: PropTypes.func.isRequired,
-  members: PropTypes.object.isRequired,
+  members: PropTypes.objectOf(PropTypes.object).isRequired,
 };
 
 export default connect(getStateMembers)(AuthorizationManager);

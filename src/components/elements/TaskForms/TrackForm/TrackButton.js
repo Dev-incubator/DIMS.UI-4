@@ -39,6 +39,10 @@ function TrackButton(props) {
   );
 }
 
+TrackButton.defaultProps = {
+  buttonContent: null,
+};
+
 TrackButton.propTypes = {
   buttonContent: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   buttonClassMod: PropTypes.string.isRequired,

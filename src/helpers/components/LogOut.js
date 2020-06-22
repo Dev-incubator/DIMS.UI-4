@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 function LogOut({ logOut }) {
   useEffect(() => {
     logOut();
-  });
+  }, [logOut]);
   return <Redirect to='/' />;
 }
 

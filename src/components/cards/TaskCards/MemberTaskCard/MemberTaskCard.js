@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable react/jsx-wrap-multilines */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -9,7 +11,7 @@ import { ReactComponent as TrackIcon } from '../../../../assets/icons/Track.svg'
 import { TaskEditButton } from '../../../elements/TaskForms/TaskEdit';
 import { TrackButton } from '../../../elements/TaskForms/TrackForm';
 import ButtonGroup from '../../../elements/ButtonGroup';
-import CollapsibleCard from '../../CollapsibleCard';
+import * as CollapsibleCard from '../../CollapsibleCard';
 import DialogButton from '../../../elements/DialogButton';
 import { AssignButton } from '../../../elements/AssignForm';
 import Client from '../../../../helpers/Client';
@@ -88,7 +90,7 @@ function MemberTaskCard(props) {
                 <h3>Assigned to:</h3>
                 <ul className='inline-list'>
                   {assignedTo.map((user) => (
-                    <li key={user.userId}>
+                    <li key={user.memberTaskId + user.userId}>
                       <Link to={`/members/${user.userId}/tasks/id${user.memberTaskId}`}>
                         <b>{members[user.userId] ? members[user.userId].firstName : 'First name'}</b>
                         {` ${members[user.userId] ? members[user.userId].lastName : 'Last name'}`}
@@ -187,10 +189,12 @@ MemberTaskCard.defaultProps = {
   assignedTo: [],
   members: [],
   status: null,
+  userId: null,
 };
 
 MemberTaskCard.propTypes = {
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  userId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   taskId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   edit: PropTypes.bool.isRequired,
   collapsed: PropTypes.bool.isRequired,
@@ -218,7 +222,6 @@ MemberTaskCard.propTypes = {
       lastName: PropTypes.string,
     }),
   ),
-  userId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 export default React.memo(MemberTaskCard, compareObjects);

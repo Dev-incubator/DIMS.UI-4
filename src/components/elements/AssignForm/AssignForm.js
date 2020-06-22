@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import assignModalInputsAttributes from './assignModalInputsAttributes';
@@ -18,8 +19,8 @@ function AssignForm(props) {
 
 AssignForm.propTypes = {
   taskId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  assignedTo: PropTypes.array.isRequired,
-  members: PropTypes.object.isRequired,
+  assignedTo: PropTypes.arrayOf(PropTypes.string).isRequired,
+  members: PropTypes.objectOf(PropTypes.object).isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 

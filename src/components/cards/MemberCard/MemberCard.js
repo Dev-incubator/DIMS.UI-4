@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable react/jsx-wrap-multilines */
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
@@ -7,7 +9,7 @@ import MemberInfo from '../../elements/MemberInfo';
 import Modal from '../../elements/Modal';
 import { ReactComponent as ProgressIcon } from '../../../assets/icons/Progress.svg';
 import { ReactComponent as TasksIcon } from '../../../assets/icons/Tasks.svg';
-import CollapsibleCard from '../CollapsibleCard';
+import * as CollapsibleCard from '../CollapsibleCard';
 import DateBadge from '../../elements/DateBadge';
 import TextBadge from '../../elements/TextBadge';
 import DialogButton from '../../elements/DialogButton';
@@ -116,6 +118,7 @@ const MemberCard = (props) => {
                       confirmButtonContent='Delete'
                       dialogValue={id}
                       onSubmit={onDelete}
+                      deletesAfterConfirmation
                     />
                     <Button content='Edit' classMod='secondary' onClick={showEditModal} />
                   </>

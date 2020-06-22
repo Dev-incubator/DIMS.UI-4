@@ -12,10 +12,6 @@
 
   @include acrylic-glass-effect;
 
-  // &.extended {
-  //   height: 138px;
-  // }
-
   .site-title {
     & > * {
       fill: $common-text;

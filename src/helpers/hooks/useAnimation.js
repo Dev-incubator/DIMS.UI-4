@@ -10,5 +10,5 @@ export default function useAnimation({ trigger, initState, finalState }) {
       set(finalState);
     }
   }, [trigger, set, initState, finalState, stop]);
-  return [style, set, stop];
+  return [style, stop];
 }

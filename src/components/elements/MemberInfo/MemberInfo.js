@@ -156,7 +156,9 @@ const MemberInfo = (props) => {
                         buttonClassMod='secondary'
                         buttonContent='Delete'
                         message={
+                          // eslint-disable-next-line react/jsx-wrap-multilines
                           <>
+                            {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
                             Are you confident, you want to delete member <b>{firstName}</b> <b>{lastName}</b>?
                           </>
                         }

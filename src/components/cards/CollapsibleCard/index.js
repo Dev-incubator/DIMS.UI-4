@@ -6,14 +6,10 @@ import CollapsibleCardTitle from './CollapsibleCardTitle';
 import CollapsibleCardDescription from './CollapsibleCardDescription';
 import './index.scss';
 
-const Card = CollapsibleCard;
-
-const Header = CollapsedCard;
-
-const Body = CollapsibleCardBody;
-
-const Title = CollapsibleCardTitle;
-
-const Description = CollapsibleCardDescription;
-
-export default { Card, Header, Body, Title, Description };
+export {
+  CollapsibleCard as Card,
+  CollapsedCard as Header,
+  CollapsibleCardBody as Body,
+  CollapsibleCardTitle as Title,
+  CollapsibleCardDescription as Description,
+};

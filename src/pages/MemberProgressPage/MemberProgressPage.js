@@ -27,14 +27,10 @@ class MemberProgressPage extends React.Component {
     this.setState({ tasks: taskData });
   }
 
-  renderProgressCard(id, data) {
-    return <WrappedMemberProgressCard id={id} {...data} />;
-  }
-
   renderProgress() {
     const { tasks } = this.state;
     return Object.entries(tasks).map(([id, data]) => {
-      return this.renderProgressCard(id, data);
+      return <WrappedMemberProgressCard id={id} {...data} />;
     });
   }
 

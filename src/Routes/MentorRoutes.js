@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { Error404Page } from '../pages/ErrorPages';
 import MembersManagerPage from '../pages/MembersManagerPage';
@@ -7,7 +7,7 @@ import MemberTasksPage from '../pages/MemberTasksPage';
 import MemberProgressPage from '../pages/MemberProgressPage';
 import NewTask from '../pages/NewTask';
 
-function MentorRoutes({ userId }) {
+function MentorRoutes() {
   return (
     <Switch>
       <Route exact path='/'>
@@ -48,9 +48,5 @@ function MentorRoutes({ userId }) {
     </Switch>
   );
 }
-
-MentorRoutes.propTypes = {
-  userId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-};
 
 export default MentorRoutes;

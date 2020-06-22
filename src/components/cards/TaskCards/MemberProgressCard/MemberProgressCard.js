@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import CollapsibleCard from '../../CollapsibleCard';
+import * as CollapsibleCard from '../../CollapsibleCard';
 import DateBadge from '../../../elements/DateBadge';
 import compareObjects from '../../../../helpers/compareObjects';
 import dateTypes from '../../../../helpers/dateTypes';
@@ -38,8 +38,6 @@ MemberProgressCard.propTypes = {
   taskName: PropTypes.string.isRequired,
   trackNote: PropTypes.string.isRequired,
   trackDate: PropTypes.instanceOf(Date).isRequired,
-  userId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-  memberTaskId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
 };
 
 export default React.memo(MemberProgressCard, compareObjects);

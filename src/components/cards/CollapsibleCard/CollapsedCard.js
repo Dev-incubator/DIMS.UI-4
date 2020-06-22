@@ -8,12 +8,13 @@ import cardHeaderAnimation from '../../../helpers/animations/cardHeaderAnimation
 function CollapsedCard(props) {
   const { children, cardClass, onClick: onClickProp, collapsed } = props;
   const { initState, finalState } = cardHeaderAnimation();
+  const trigger = () => !collapsed;
 
-  const [style, , stop] = useAnimation({ trigger: () => !collapsed, initState, finalState });
+  const [style, stop] = useAnimation({ trigger, initState, finalState });
 
-  const onClick = (collapsed) => {
+  const onClick = (collapsedValue) => {
     stop();
-    onClickProp(collapsed);
+    onClickProp(collapsedValue);
   };
 
   return (
@@ -30,6 +31,12 @@ function CollapsedCard(props) {
     </animated.div>
   );
 }
+
+CollapsedCard.defaultProps = {
+  onClick: () => {},
+  cardClass: '',
+  collapsed: true,
+};
 
 CollapsedCard.propTypes = {
   onClick: PropTypes.func,

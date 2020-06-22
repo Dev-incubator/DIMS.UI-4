@@ -126,7 +126,7 @@ const NewMember = ({ members, match }) => {
 };
 
 NewMember.propTypes = {
-  members: PropTypes.object.isRequired,
+  members: PropTypes.objectOf(PropTypes.object).isRequired,
   match: PropTypes.shape({
     path: PropTypes.string,
   }).isRequired,

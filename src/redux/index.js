@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import { combineReducers, createStore } from 'redux';
 
 import * as reducers from './reducers';

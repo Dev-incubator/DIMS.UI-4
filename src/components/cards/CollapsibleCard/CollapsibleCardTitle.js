@@ -11,6 +11,11 @@ function CollapsibleCardTitle(props) {
   );
 }
 
+CollapsibleCardTitle.defaultProps = {
+  cardClass: '',
+  onClick: () => {},
+};
+
 CollapsibleCardTitle.propTypes = {
   cardClass: PropTypes.string,
   onClick: PropTypes.func,

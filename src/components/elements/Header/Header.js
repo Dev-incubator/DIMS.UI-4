@@ -21,11 +21,13 @@ function Header(props) {
   const [filterRegexpMode, setFilterRegexpMode] = useState(false);
   const [showFilterPanel, setShowFilterPanel] = useState(false);
   const { initState, finalState } = headerAnimation();
+  const trigger = () => showFilterPanel;
 
-  const [style, , stop] = useAnimation({ trigger: () => showFilterPanel, initState, finalState });
+  const [style, stop] = useAnimation({ trigger, initState, finalState });
 
   const togglePanel = () => {
     stop();
+    filterFunction('');
     setShowFilterPanel(!showFilterPanel);
   };
 
@@ -74,6 +76,12 @@ function Header(props) {
     </animated.header>
   );
 }
+
+Header.defaultProps = {
+  navItems: null,
+  role: null,
+  filterFunction: null,
+};
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,

@@ -10,6 +10,7 @@ function Button(props) {
   }
 
   return (
+    // eslint-disable-next-line react/button-has-type
     <button className={`button button${`_${classMod}` || ''}`} type={type} onClick={onClickHandler}>
       {content || children}
     </button>
@@ -19,12 +20,16 @@ function Button(props) {
 Button.defaultProps = {
   type: 'button',
   classMod: 'primary',
+  link: '#',
+  content: null,
+  children: null,
+  onClick: null,
 };
 
 Button.propTypes = {
   type: PropTypes.string,
   content: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-  history: PropTypes.any.isRequired,
+  history: PropTypes.shape({ push: PropTypes.func }).isRequired,
   classMod: PropTypes.string,
   link: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),

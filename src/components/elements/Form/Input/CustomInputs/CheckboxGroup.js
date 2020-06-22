@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import checkboxValueSeparator from '../../../../../helpers/formHelpers/checkboxValueSeparator';
@@ -19,6 +20,7 @@ function CheckboxGroup(props) {
         } else {
           values.splice(values.indexOf(value), 1);
         }
+        // eslint-disable-next-line no-param-reassign
         event.target.value = values;
       }
       onChange(event);
@@ -53,6 +55,15 @@ function CheckboxGroup(props) {
     </div>
   );
 }
+
+CheckboxGroup.defaultProps = {
+  value: null,
+  onInput: () => {},
+  onChange: () => {},
+  required: false,
+  attributes: null,
+  description: null,
+};
 
 CheckboxGroup.propTypes = {
   id: PropTypes.string.isRequired,

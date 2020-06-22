@@ -26,6 +26,7 @@ function Routes(props) {
 Routes.propTypes = {
   role: PropTypes.string.isRequired,
   userId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
   location: PropTypes.object.isRequired,
 };
 

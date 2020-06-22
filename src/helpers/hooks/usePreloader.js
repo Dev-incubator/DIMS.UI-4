@@ -13,13 +13,8 @@ const usePreloader = ({ members, role }) => {
   Client.getDirections();
 
   useEffect(() => {
-    if (role !== 'member' && role !== 'guest') {
+    if (!Object.keys(members).length && role !== 'member' && role !== 'guest') {
       requestAndFetch(dispatch, membersActions.setMembers, Client.getMembers);
-    }
-  }, [role, dispatch]);
-
-  useEffect(() => {
-    if (role !== 'member' && role !== 'guest') {
       requestAndFetch(dispatch, assignedTasksActions.setAssignedToTasks, Client.getAllAssigned);
     }
   }, [role, members, dispatch]);

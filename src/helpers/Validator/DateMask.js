@@ -153,13 +153,13 @@ const DateMask = {
       .replace(/(^|[^M])MMM($|[^M])/g, `$1${monthsShort[date.getMonth()]}$2`)
       .replace(/(^|[^M])MMMM($|[^M])/g, `$1${months[date.getMonth()]}$2`)
       .replace(/(^|[^d])d($|[^d])/g, `$1${date.getDate()}$2`)
-      .replace(/(^|[^d])dd($|[^d])/g, `$1${date.getDate() < 9 ? `0${date.getDate()}` : date.getDate()}$2`)
+      .replace(/(^|[^d])dd($|[^d])/g, `$1${date.getDate() <= 9 ? `0${date.getDate()}` : date.getDate()}$2`)
       .replace(/(^|[^y])yy($|[^y])/g, `$1${date.getFullYear() % 100}$2`)
       .replace(/(^|[^y])yyyy($|[^y])/g, `$1${date.getFullYear()}$2`)
       .replace(/(^|[^m])m($|[^m])/g, `$1${date.getMinutes()}$2`)
-      .replace(/(^|[^m])mm($|[^m])/g, `$1${date.getMinutes() < 9 ? `0${date.getMinutes()}` : date.getMinutes()}$2`)
+      .replace(/(^|[^m])mm($|[^m])/g, `$1${date.getMinutes() <= 9 ? `0${date.getMinutes()}` : date.getMinutes()}$2`)
       .replace(/(^|[^s])s($|[^s])/g, `$1${date.getSeconds()}$2`)
-      .replace(/(^|[^s])ss($|[^s])/g, `$1${date.getSeconds() < 9 ? `0${date.getSeconds()}` : date.getSeconds()}$2`)
+      .replace(/(^|[^s])ss($|[^s])/g, `$1${date.getSeconds() <= 9 ? `0${date.getSeconds()}` : date.getSeconds()}$2`)
       .replace(/(^|[^h])h($|[^h])/g, `$1${date.getHours() - 12}$2`)
       .replace(
         /(^|[^h])hh($|[^h])/g,

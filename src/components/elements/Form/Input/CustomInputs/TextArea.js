@@ -42,6 +42,17 @@ function TextArea(props) {
   );
 }
 
+TextArea.defaultProps = {
+  onInput: () => {},
+  onChange: () => {},
+  value: null,
+  required: false,
+  attributes: null,
+  description: null,
+  minSymbols: 0,
+  maxSymbols: 0,
+};
+
 TextArea.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
@@ -50,7 +61,7 @@ TextArea.propTypes = {
   onChange: PropTypes.func,
   required: PropTypes.bool,
   attributes: PropTypes.objectOf(PropTypes.string),
-  value: PropTypes.any,
+  value: PropTypes.string,
   minSymbols: PropTypes.number,
   maxSymbols: PropTypes.number,
   onError: PropTypes.func.isRequired,

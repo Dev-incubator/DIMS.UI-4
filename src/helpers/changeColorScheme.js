@@ -30,6 +30,7 @@ export default function changeColorScheme({
       mutedText,
     }),
   );
+  const oldTheme = changeColorScheme.currentTheme;
   changeColorScheme.currentTheme = name;
   changeColorScheme.currentColors = {
     primaryBg,
@@ -42,6 +43,9 @@ export default function changeColorScheme({
     lightText,
     mutedText,
   };
+  if (oldTheme && oldTheme !== name) {
+    document.location.reload();
+  }
 }
 
 const themes = {

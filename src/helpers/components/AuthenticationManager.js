@@ -30,7 +30,8 @@ class AuthenticationManager extends Component {
   };
 
   redirectHome = () => {
-    this.props.history.push('/');
+    const { history } = this.props;
+    history.push('/');
   };
 
   authenticate = async (login, password) => {

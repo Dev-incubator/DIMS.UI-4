@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
@@ -44,6 +45,11 @@ function TaskEditButton(props) {
   );
 }
 
+TaskEditButton.defaultProps = {
+  empty: false,
+  show: false,
+};
+
 TaskEditButton.propTypes = {
   buttonContent: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
   buttonClassMod: PropTypes.string.isRequired,
@@ -64,6 +70,12 @@ TaskEditButton.propTypes = {
   members: PropTypes.objectOf(PropTypes.object),
   onSubmit: PropTypes.func.isRequired,
   empty: PropTypes.bool,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+    goBack: PropTypes.func,
+  }).isRequired,
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
+  show: PropTypes.bool,
 };
 
 export default withRouter(TaskEditButton);

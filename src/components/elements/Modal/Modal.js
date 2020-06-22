@@ -1,7 +1,11 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Spring } from 'react-spring/renderprops';
+import ReactDOM from 'react-dom';
 import fadeIn from '../../../helpers/animations/fadeIn';
+import renderModal from './renderModal';
+import CustomSpring from './CustomSpring';
 
 class Modal extends React.PureComponent {
   constructor(props) {
@@ -72,25 +76,37 @@ class Modal extends React.PureComponent {
   render() {
     const { show, from, to } = this.state;
     const { children, backface, className, animationDelay } = this.props;
+    const container = document.getElementById('modals');
 
-    return (
-      <>
-        {show && (
-          <Spring config={{ duration: 50, delay: animationDelay }} from={from} to={to}>
-            {(props) => (
-              <>
-                <article className={`modal ${show ? 'show' : ''} ${className || ''}`} style={props}>
-                  {children}
-                </article>
-                {backface && (
-                  <div className='modal-shadow' role='article' style={props} onClick={this.modalBackfaceClick} />
-                )}
-              </>
-            )}
-          </Spring>
-        )}
-      </>
-    );
+    if (!backface) {
+      return (
+        <>
+          {show && (
+            <CustomSpring animationDelay={animationDelay} from={from} to={to}>
+              {(style) => renderModal(show, className, style, children)}
+            </CustomSpring>
+          )}
+        </>
+      );
+    }
+
+    if (show) {
+      return ReactDOM.createPortal(
+        <CustomSpring animationDelay={animationDelay} from={from} to={to}>
+          {(style) => (
+            <>
+              {renderModal(show, className, style, children)}
+              {backface && (
+                <div className='modal-shadow' role='article' style={style} onClick={this.modalBackfaceClick} />
+              )}
+            </>
+          )}
+        </CustomSpring>,
+        container,
+      );
+    }
+
+    return null;
   }
 }
 
@@ -99,6 +115,7 @@ Modal.defaultProps = {
   backface: true,
   onClose: () => {},
   animationDelay: 0,
+  className: null,
 };
 
 Modal.propTypes = {

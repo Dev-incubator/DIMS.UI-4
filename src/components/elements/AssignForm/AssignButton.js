@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
@@ -46,13 +47,19 @@ function AssignButton(props) {
   );
 }
 
+AssignButton.defaultProps = {
+  buttonClassMod: null,
+  buttonContent: null,
+  children: null,
+};
+
 AssignButton.propTypes = {
   taskId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   buttonClassMod: PropTypes.string,
   buttonContent: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   reload: PropTypes.func.isRequired,
-  assignedTo: PropTypes.array.isRequired,
-  members: PropTypes.object.isRequired,
+  assignedTo: PropTypes.arrayOf(PropTypes.string).isRequired,
+  members: PropTypes.objectOf(PropTypes.object).isRequired,
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
 };
 

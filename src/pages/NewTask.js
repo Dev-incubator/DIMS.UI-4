@@ -15,7 +15,7 @@ import masks from '../helpers/maskHelpers/masks';
 import getStateMembers from '../helpers/getStateMembers';
 
 const NewTask = ({ members, match }) => {
-  const postTask = async ({ taskName, taskDescription, taskStart, taskDeadline, members, members_default }) => {
+  const postTask = async ({ taskName, taskDescription, taskStart, taskDeadline, members: membersList }) => {
     const calculatedTaskStart = Validator.parseDateByMask(taskStart, masks.date);
     const calculatedTaskDeadline = Validator.parseDateByMask(taskDeadline, masks.date);
 
@@ -23,9 +23,9 @@ const NewTask = ({ members, match }) => {
       return Client.postTask(taskName, taskDescription, calculatedTaskStart, calculatedTaskDeadline);
     };
 
-    if (members.length) {
+    if (membersList.length) {
       const taskId = await createTask();
-      await Client.assignTask(taskId, checkboxValueSeparator(members));
+      await Client.assignTask(taskId, checkboxValueSeparator(membersList));
     } else {
       await createTask();
     }

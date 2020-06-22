@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import React from 'react';
 import Validator from '../../../../helpers/Validator';
 import getValueFromMask from '../../../../helpers/maskHelpers/getValueFromMask';

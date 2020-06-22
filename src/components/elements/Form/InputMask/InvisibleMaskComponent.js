@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import React from 'react';
 
 import placeInputCursorToEnd from '../../../../helpers/maskHelpers/placeInputCursorToEnd';

@@ -6,6 +6,10 @@ function ButtonGroup(props) {
   return <div className='button-block'>{children}</div>;
 }
 
+ButtonGroup.defaultProps = {
+  children: null,
+};
+
 ButtonGroup.propTypes = {
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
 };

@@ -20,7 +20,7 @@ export default function assignedTasks(state = initialState, action) {
 function assignTask(state, taskId, userIds) {
   let newState = { ...state };
   if (!state || !Object.keys(state).length) {
-    newState = {};
+    newState = { [taskId]: [] };
   }
 
   if (!newState[taskId]) {

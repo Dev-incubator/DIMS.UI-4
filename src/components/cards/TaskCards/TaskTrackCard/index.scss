@@ -1,5 +1,12 @@
 .track-card {
+  .task-card__header {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
   .button-block {
     justify-content: flex-end !important;
+    & > * {
+      margin-left: 10px;
+    }
   }
 }

@@ -1,3 +1,5 @@
+/* eslint-disable react/require-default-props */
+/* eslint-disable react/no-unused-prop-types */
 import React, { useState, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import Form from '../../Form';
@@ -14,8 +16,6 @@ const TaskEdit = (props) => {
   const setInputs = (data) => {
     dispatch(updateAction(data));
   };
-
-  console.log(inputs);
 
   const [loading, setLoading] = useState(false);
 

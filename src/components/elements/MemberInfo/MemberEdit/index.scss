@@ -81,10 +81,18 @@
   }
 
   .date-badge {
+    [class*='icon-'] {
+      padding-right: 5px;
+    }
+
+    margin-left: 10px;
     .form-control {
-      width: 100px;
+      height: 30px;
+      box-sizing: border-box;
+      width: 110px;
       margin: 0;
       margin-top: 10px;
+      margin-bottom: 10px;
       font-size: 1.1rem !important;
       text-align: center;
     }
@@ -118,7 +126,18 @@
   }
 
   .text-badge {
-    width: 150px;
+    width: 130px;
+    @media screen and (max-width: 1200px) {
+      & {
+        height: 30px;
+        box-sizing: border-box;
+        padding: 2px;
+        & > .form-select {
+          height: 26px;
+          padding-top: 3px;
+        }
+      }
+    }
   }
 
   .form-select {
@@ -176,10 +195,6 @@
     }
 
     @include clearfix;
-
-    .date-badge {
-      font-size: 1.4rem;
-    }
   }
 
   [class*='icon-'] {

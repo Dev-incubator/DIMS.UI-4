@@ -21,6 +21,7 @@ function ChangeStateButton({ memberTaskId, status, reload, buttonClassMod, butto
 ChangeStateButton.defaultProps = {
   buttonClassMod: 'primary',
   buttonContent: 'Change status',
+  children: null,
 };
 
 ChangeStateButton.propTypes = {

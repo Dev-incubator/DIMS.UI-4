@@ -14,6 +14,7 @@ function Select(props) {
   }
 
   return (
+    // eslint-disable-next-line jsx-a11y/no-onchange
     <select
       className='form-select'
       name={name}
@@ -33,10 +34,12 @@ function Select(props) {
 
 Select.defaultProps = {
   required: false,
+  value: null,
+  placeholder: null,
 };
 
 Select.propTypes = {
-  value: PropTypes.any,
+  value: PropTypes.string,
   placeholder: PropTypes.string,
   required: PropTypes.bool,
   name: PropTypes.string.isRequired,

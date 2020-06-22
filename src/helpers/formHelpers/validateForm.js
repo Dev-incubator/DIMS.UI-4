@@ -2,7 +2,7 @@ import findInputByName from './findInputByName';
 
 export default function checkValidity(values, inputs, onValidationFail) {
   let input;
-  for (let valueName in values) {
+  Object.keys(values).forEach((valueName) => {
     input = findInputByName(inputs, valueName);
     if (values[valueName].required && !values[valueName].value) {
       onValidationFail(input);
@@ -10,6 +10,6 @@ export default function checkValidity(values, inputs, onValidationFail) {
     if (input.validator && !input.validator(values[valueName].value)) {
       onValidationFail(input);
     }
-  }
+  });
   return true;
 }
