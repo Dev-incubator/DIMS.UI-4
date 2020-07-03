@@ -200,7 +200,7 @@ const Client = {
       tasksObject[doc.id].taskId = doc.id;
     };
 
-    (await Promise.allSettled(tasks.docs.map(formatTask))).map(getValue);
+    await Promise.allSettled(tasks.docs.map(formatTask));
     return tasksObject;
   },
 
@@ -210,7 +210,8 @@ const Client = {
       return { userId: doc.data().userID, memberTaskId: doc.id };
     };
 
-    const assigned = (await Promise.allSettled(membersTasks.docs.map(formatAssigned))).map(getValue);
+    const formated = await Promise.allSettled(membersTasks.docs.map(formatAssigned));
+    const assigned = (formated).map(getValue);
     return assigned;
   },
 
@@ -223,8 +224,7 @@ const Client = {
       assigned[taskId] = assignedArray;
     };
 
-    (await Promise.allSettled(taskIds.map(processAssigned))).map(getValue);
-
+    await Promise.allSettled(taskIds.map(processAssigned));
     return assigned;
   },
 

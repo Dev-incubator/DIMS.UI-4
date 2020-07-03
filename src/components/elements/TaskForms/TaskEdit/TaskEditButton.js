@@ -48,6 +48,7 @@ function TaskEditButton(props) {
 TaskEditButton.defaultProps = {
   empty: false,
   show: false,
+  children: null,
 };
 
 TaskEditButton.propTypes = {
@@ -74,7 +75,7 @@ TaskEditButton.propTypes = {
     push: PropTypes.func,
     goBack: PropTypes.func,
   }).isRequired,
-  children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   show: PropTypes.bool,
 };
 

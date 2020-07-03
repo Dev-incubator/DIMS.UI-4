@@ -194,6 +194,7 @@ MemberTaskCard.defaultProps = {
 
 MemberTaskCard.propTypes = {
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  // eslint-disable-next-line react/no-unused-prop-types
   userId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   taskId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   edit: PropTypes.bool.isRequired,

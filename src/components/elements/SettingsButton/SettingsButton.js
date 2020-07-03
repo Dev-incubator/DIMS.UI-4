@@ -1,4 +1,6 @@
 import React, { useRef, useReducer } from 'react';
+import PropTypes from 'prop-types';
+
 import Button from '../Button';
 import { ReactComponent as SettingsIcon } from '../../../assets/icons/settings.svg';
 import Modal from '../Modal';
@@ -7,7 +9,7 @@ import Form from '../Form';
 import getSettingsFormInputsProps from './getSettingsFormInputsProps';
 import inputsReducer, { updateAction } from '../../../helpers/formHelpers/inputsReducer';
 
-const SettingsButton = () => {
+const SettingsButton = ({ layout, buttonClassMod }) => {
   const [inputs, dispatch] = useReducer(inputsReducer, {});
   const setInputs = (data) => {
     dispatch(updateAction(data));
@@ -41,11 +43,21 @@ const SettingsButton = () => {
         </Button>
         <div className='about'>Done by Maxim Logvinenko</div>
       </Modal>
-      <Button classMod='invisible'>
-        <SettingsIcon className='icon-settings' onClick={toggleModal} />
+      <Button classMod={buttonClassMod} onClick={toggleModal}>
+        {layout === 'text' ? 'Settings' : <SettingsIcon className='icon-settings' />}
       </Button>
     </>
   );
+};
+
+SettingsButton.defaultProps = {
+  layout: 'icon',
+  buttonClassMod: 'invisible',
+};
+
+SettingsButton.propTypes = {
+  layout: PropTypes.oneOf(['text', 'icon']),
+  buttonClassMod: PropTypes.string,
 };
 
 export default SettingsButton;

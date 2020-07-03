@@ -14,10 +14,10 @@ const DialogButton = (props) => {
     message,
     confirmButtonClassMod,
     confirmButtonContent,
-    deletesAfterConfirmation,
+    selfDelete,
   } = props;
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(null);
   const modal = useRef({});
 
   const onClick = () => {
@@ -33,7 +33,7 @@ const DialogButton = (props) => {
     setLoading(true);
 
     return propsOnSubmit(data).then((response) => {
-      if (!deletesAfterConfirmation) {
+      if (!selfDelete) {
         setLoading(false);
         reload();
       }
@@ -77,7 +77,7 @@ const DialogButton = (props) => {
 
 DialogButton.defaultProps = {
   reload: () => {},
-  deletesAfterConfirmation: false,
+  selfDelete: false,
 };
 
 DialogButton.propTypes = {
@@ -89,7 +89,7 @@ DialogButton.propTypes = {
   dialogValue: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
   reload: PropTypes.func,
-  deletesAfterConfirmation: PropTypes.bool,
+  selfDelete: PropTypes.bool,
 };
 
 export default DialogButton;

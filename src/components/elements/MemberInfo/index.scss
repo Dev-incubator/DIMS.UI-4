@@ -54,12 +54,19 @@
       align-items: center;
     }
 
+    @media screen and (max-width: 400px) {
+      & {
+        flex-direction: column;
+      }
+    }
+
     @media screen and (max-width: 1200px) {
       & {
         padding: 5px;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
+        text-align: center;
       }
 
       .button {
@@ -122,6 +129,7 @@
     @media screen and (max-width: 1200px) {
       flex-wrap: wrap;
       & > * {
+        @include ellipsis;
         width: auto !important;
         margin: 2%;
       }
@@ -211,6 +219,11 @@
         & {
           width: 100%;
           justify-content: center;
+          margin-bottom: -5px;
+
+          .button {
+            margin-bottom: 5px;
+          }
         }
         &:last-child > .button:first-child {
           border: 2px solid $primary-bg;
@@ -233,5 +246,39 @@
 
   [class*='icon-'] {
     fill: $common-text;
+  }
+
+  @media screen and (max-width: 700px) {
+    &__additional-info {
+      flex-direction: column;
+    }
+    .flex-column {
+      width: 100%;
+    }
+    .address {
+      margin: 0;
+      width: 98%;
+    }
+
+    &__contacts {
+      padding: 10px 0;
+      justify-content: flex-start;
+    }
+  }
+
+  @media screen and (max-width: 580px) {
+    [class*='icon-'] {
+      transform: scale(0.8);
+    }
+
+    &__header {
+      & > .badges {
+        flex-direction: column;
+        align-items: center;
+        .text-badge {
+          margin-right: -10px;
+        }
+      }
+    }
   }
 }

@@ -153,6 +153,7 @@
   .button {
     float: right;
     margin-left: 10px;
+    margin-bottom: 30px;
   }
 
   .button:not(:last-child) {
@@ -162,6 +163,7 @@
   &.empty {
     .button[type='submit'] {
       float: right;
+      margin-bottom: 30px;
     }
   }
 

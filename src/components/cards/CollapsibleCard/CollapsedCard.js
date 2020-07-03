@@ -36,13 +36,14 @@ CollapsedCard.defaultProps = {
   onClick: () => {},
   cardClass: '',
   collapsed: true,
+  children: [],
 };
 
 CollapsedCard.propTypes = {
   onClick: PropTypes.func,
   cardClass: PropTypes.string,
   collapsed: PropTypes.bool,
-  children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
 };
 
 export default CollapsedCard;

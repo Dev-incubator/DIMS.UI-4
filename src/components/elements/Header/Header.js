@@ -44,13 +44,23 @@ function Header(props) {
             {title && (
               <h1 className='page-title'>
                 {title}
-                {matchMaxWidth('600px') || (role && <TextBadge>{role}</TextBadge>)}
+                {!matchMaxWidth('600px') && role && <TextBadge>{role}</TextBadge>}
               </h1>
             )}
             {navItems && navItems.length && (
               <>
                 {matchMaxWidth('1200px') ? (
-                  <MobileNav className='header__nav' navItems={navItems} />
+                  <MobileNav
+                    className='header__nav'
+                    navItems={[
+                      ...navItems,
+                      {
+                        id: 'settings',
+                        active: false,
+                        button: <>{role && <SettingsButton buttonClassMod='navItem' layout='text' />}</>,
+                      },
+                    ]}
+                  />
                 ) : (
                   <Nav className='header__nav' navItems={navItems} />
                 )}
@@ -61,7 +71,7 @@ function Header(props) {
                 <SearchIcon className='icon-search' />
               </Button>
             )}
-            {role && <SettingsButton />}
+            {!matchMaxWidth('1200px') && role && <SettingsButton />}
           </ContainerComponent>
           {filterFunction && (
             <FilterPanel

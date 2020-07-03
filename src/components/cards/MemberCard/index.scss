@@ -4,16 +4,6 @@
 .member-card {
   @include clearfix;
 
-  @media screen and (max-width: 790px) {
-    .button_primary {
-      width: 40px;
-      height: 40px;
-      & > span {
-        display: none;
-      }
-    }
-  }
-
   &.open > &__header {
     position: relative;
     background-color: $highlight-bg;
@@ -58,10 +48,19 @@
       }
     }
 
-    @media screen and (max-width: 400px) {
+    @media screen and (max-width: 550px) {
       &__title {
         width: 100%;
         text-align: center;
+      }
+    }
+
+    @media screen and (max-width: 550px) {
+      & {
+        padding: 0 !important;
+      }
+      &__title {
+        border-bottom: none;
       }
     }
 
@@ -78,6 +77,26 @@
       margin-left: 40px;
       padding: 5px 0;
       font-size: 1.3rem;
+    }
+  }
+
+  @media screen and (max-width: 790px) {
+    & .button-block {
+      justify-content: center;
+      width: 100%;
+    }
+    & .button-block .button_primary {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      svg {
+        padding-right: 0;
+      }
+      & > span {
+        display: none;
+      }
     }
   }
 }

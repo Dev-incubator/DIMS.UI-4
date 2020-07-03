@@ -267,7 +267,7 @@ Form.propTypes = {
       validationMessage: PropTypes.string,
     }),
   ).isRequired,
-  onSubmit: PropTypes.func,
+  onSubmit: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
   submitButton: PropTypes.element,
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
 

@@ -17,11 +17,17 @@ function WrappedMemberProgressCard({ id, taskName, trackNote, trackDate, collaps
   );
 }
 
+WrappedMemberProgressCard.defaultProps = {
+  open: () => {},
+  close: () => {},
+  collapsed: true,
+};
+
 WrappedMemberProgressCard.propTypes = {
-  id: PropTypes.string.isRequired,
-  open: PropTypes.func.isRequired,
-  close: PropTypes.func.isRequired,
-  collapsed: PropTypes.bool.isRequired,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  open: PropTypes.func,
+  close: PropTypes.func,
+  collapsed: PropTypes.bool,
 
   taskName: PropTypes.string.isRequired,
   trackNote: PropTypes.string.isRequired,

@@ -86,4 +86,31 @@
       padding: 20px;
     }
   }
+
+  @media screen and (max-width: 500px) {
+    .button-block {
+      display: flex;
+      justify-content: center;
+      & .button {
+        margin-right: 10px;
+        min-width: 40px !important;
+        width: 60px;
+        svg {
+          margin-left: 10px;
+        }
+      }
+
+      .button-block {
+        display: flex;
+        & > .button {
+          min-width: 40px !important;
+          width: 60px;
+        }
+      }
+
+      .button_invisible {
+        padding: 20px;
+      }
+    }
+  }
 }

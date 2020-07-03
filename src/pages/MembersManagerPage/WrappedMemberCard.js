@@ -53,6 +53,12 @@ function WrappedMemberCard({
   );
 }
 
+WrappedMemberCard.defaultProps = {
+  open: () => {},
+  close: () => {},
+  collapsed: true,
+};
+
 WrappedMemberCard.propTypes = {
   id: PropTypes.string.isRequired,
   firstName: PropTypes.string.isRequired,
@@ -69,9 +75,9 @@ WrappedMemberCard.propTypes = {
   universityAverageScore: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
   mathScore: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
 
-  open: PropTypes.func.isRequired,
-  close: PropTypes.func.isRequired,
-  collapsed: PropTypes.bool.isRequired,
+  open: PropTypes.func,
+  close: PropTypes.func,
+  collapsed: PropTypes.bool,
 };
 
 export default WrappedMemberCard;

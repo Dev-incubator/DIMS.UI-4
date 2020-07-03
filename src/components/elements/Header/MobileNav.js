@@ -15,11 +15,13 @@ function Nav(props) {
   };
 
   function renderNavItems() {
-    return navItems.map((el) => (
-      <li className='nav-item' key={el.id}>
-        <Button link={el.link} classMod={`navItem${el.active ? '_active' : ''}`}>
-          {el.content}
-        </Button>
+    return navItems.map(({ id, link, active, content, button }) => (
+      <li className='nav-item' key={id}>
+        {button || (
+          <Button link={link} classMod={`navItem${active ? '_active' : ''}`}>
+            {content}
+          </Button>
+        )}
       </li>
     ));
   }
@@ -39,6 +41,7 @@ function Nav(props) {
 }
 Nav.defaultProps = {
   className: '',
+  button: null,
 };
 
 Nav.propTypes = {
@@ -49,6 +52,7 @@ Nav.propTypes = {
       link: PropTypes.string,
       content: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
       active: PropTypes.bool.isRequired,
+      button: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
     }),
   ).isRequired,
 };

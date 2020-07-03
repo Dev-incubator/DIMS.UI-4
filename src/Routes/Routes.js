@@ -6,11 +6,13 @@ import MentorRoutes from './MentorRoutes';
 import AdminRoutes from './AdminRoutes';
 import MemberRoutes from './MemberRoutes';
 import useScrollToTop from '../helpers/hooks/useScrollToTop';
+import useAdaptivity from '../helpers/hooks/useAdaptivity';
 
 function Routes(props) {
   const { role, userId, location } = props;
 
   useScrollToTop({ location });
+  useAdaptivity();
 
   return (
     <>

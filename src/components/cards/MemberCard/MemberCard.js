@@ -9,6 +9,7 @@ import MemberInfo from '../../elements/MemberInfo';
 import Modal from '../../elements/Modal';
 import { ReactComponent as ProgressIcon } from '../../../assets/icons/Progress.svg';
 import { ReactComponent as TasksIcon } from '../../../assets/icons/Tasks.svg';
+import { ReactComponent as InfoIcon } from '../../../assets/icons/info.svg';
 import * as CollapsibleCard from '../CollapsibleCard';
 import DateBadge from '../../elements/DateBadge';
 import TextBadge from '../../elements/TextBadge';
@@ -20,6 +21,7 @@ import compareObjects from '../../../helpers/compareObjects';
 import dateTypes from '../../../helpers/dateTypes';
 import matchMaxWidth from '../../../helpers/matchMaxWidth';
 import ButtonGroup from '../../elements/ButtonGroup';
+import useAdaptivity from '../../../helpers/hooks/useAdaptivity';
 
 const MemberCard = (props) => {
   const {
@@ -50,6 +52,7 @@ const MemberCard = (props) => {
   const modal = useRef({});
 
   const [edit, setEdit] = useState(editDefault);
+  useAdaptivity();
 
   const editOff = () => {
     setEdit(false);
@@ -82,10 +85,10 @@ const MemberCard = (props) => {
             <b>{firstName}</b>
             {` ${lastName}, ${age}`}
           </CollapsibleCard.Title>
-          {matchMaxWidth('550px') || (
+          {!matchMaxWidth('550px') && (
             <div>
               <TextBadge>{direction}</TextBadge>
-              {matchMaxWidth('750px') || <DateBadge date={startDate} type={dateTypes.startDate} />}
+              {!matchMaxWidth('750px') && <DateBadge date={startDate} type={dateTypes.startDate} />}
             </div>
           )}
         </CollapsibleCard.Header>
@@ -99,33 +102,41 @@ const MemberCard = (props) => {
               <TasksIcon className='icon-tasks' />
               <span>Tasks</span>
             </Button>
-          </ButtonGroup>
-          <ButtonGroup>
-            <Button content='More info' classMod='ghost' onClick={showModal} />
-            {role === 'admin' && (
-              <>
-                {matchMaxWidth('550px') || (
-                  <>
-                    <DialogButton
-                      buttonClassMod='secondary'
-                      buttonContent='Delete'
-                      message={
-                        <>
-                          Are you confident, you want to delete member <b>{firstName}</b> <b>{lastName}</b>?
-                        </>
-                      }
-                      confirmButtonClassMod='error'
-                      confirmButtonContent='Delete'
-                      dialogValue={id}
-                      onSubmit={onDelete}
-                      deletesAfterConfirmation
-                    />
-                    <Button content='Edit' classMod='secondary' onClick={showEditModal} />
-                  </>
-                )}
-              </>
+            {matchMaxWidth('500px') && (
+              <Button classMod='primary' onClick={showModal}>
+                <InfoIcon className='icon-info' />
+              </Button>
             )}
           </ButtonGroup>
+
+          {!matchMaxWidth('500px') && (
+            <ButtonGroup>
+              <Button content='More info' classMod='ghost' onClick={showModal} />
+              {role === 'admin' && (
+                <>
+                  {!matchMaxWidth('550px') && (
+                    <>
+                      <DialogButton
+                        buttonClassMod='secondary'
+                        buttonContent='Delete'
+                        message={
+                          <>
+                            Are you confident, you want to delete member <b>{firstName}</b> <b>{lastName}</b>?
+                          </>
+                        }
+                        confirmButtonClassMod='error'
+                        confirmButtonContent='Delete'
+                        dialogValue={id}
+                        onSubmit={onDelete}
+                        selfDelete
+                      />
+                      <Button content='Edit' classMod='secondary' onClick={showEditModal} />
+                    </>
+                  )}
+                </>
+              )}
+            </ButtonGroup>
+          )}
         </CollapsibleCard.Body>
       </CollapsibleCard.Card>
       <Modal ref={modal} className='member-info' onClose={editOff}>

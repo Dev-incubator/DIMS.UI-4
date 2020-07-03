@@ -21,6 +21,7 @@ import Spinner from '../Spinner';
 import { deleteMember } from '../../../redux/actions/membersActions';
 import editMemberHelper from '../../../helpers/editMemberHelper';
 import dateTypes from '../../../helpers/dateTypes';
+import CopyableText from '../CopyableText';
 
 const MemberInfo = (props) => {
   const {
@@ -81,22 +82,22 @@ const MemberInfo = (props) => {
                   <b>{firstName}</b>
                   {` ${lastName}`}
                 </p>
-                <div>
+                <div className='badges'>
                   <TextBadge>{direction}</TextBadge>
                   <DateBadge date={startDate} type={dateTypes.startDate} />
                 </div>
               </div>
               <div className='member-info__body'>
                 <div className='member-info__contacts'>
-                  <a href={`mailto:${email}`}>
+                  <a title={email} href={`mailto:${email}`}>
                     <EnvelopeIcon className='icon-envelope' />
-                    <span>{email}</span>
+                    <CopyableText>{email}</CopyableText>
                   </a>
-                  <a href={`skype:${skype}`}>
+                  <a title={skype} href={`skype:${skype}`}>
                     <SkypeIcon className='icon-skype' />
                     {skype}
                   </a>
-                  <a href={`tel:${mobilePhone.replace(/[\s()+]/, '')}`}>
+                  <a title={mobilePhone} href={`tel:${mobilePhone.replace(/[\s()+]/, '')}`}>
                     <MobileIcon className='icon-mobile' />
                     <span>{mobilePhone}</span>
                   </a>

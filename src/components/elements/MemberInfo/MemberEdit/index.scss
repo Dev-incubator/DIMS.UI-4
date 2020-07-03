@@ -94,7 +94,6 @@
       margin-top: 10px;
       margin-bottom: 10px;
       font-size: 1.1rem !important;
-      text-align: center;
     }
   }
 
@@ -131,17 +130,17 @@
       & {
         height: 30px;
         box-sizing: border-box;
-        padding: 2px;
+        padding: 2px 0;
         & > .form-select {
           height: 26px;
-          padding-top: 3px;
+          width: 126px;
         }
       }
     }
   }
 
   .form-select {
-    width: 150px;
+    width: 130px;
     padding: 5px;
     border: none;
     border-radius: 20px;

@@ -54,15 +54,18 @@ WrappedMemberTask.defaultProps = {
   assignedTo: [],
   members: [],
   status: null,
+  open: () => {},
+  close: () => {},
+  collapsed: true,
 };
 
 WrappedMemberTask.propTypes = {
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   taskId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   edit: PropTypes.bool.isRequired,
-  collapsed: PropTypes.bool.isRequired,
-  open: PropTypes.func.isRequired,
-  close: PropTypes.func.isRequired,
+  collapsed: PropTypes.bool,
+  open: PropTypes.func,
+  close: PropTypes.func,
   taskSet: PropTypes.oneOf(['all', 'user']).isRequired,
   update: PropTypes.func.isRequired,
   taskName: PropTypes.string.isRequired,
